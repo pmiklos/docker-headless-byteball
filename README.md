@@ -7,12 +7,18 @@ The simplest way to create the docker image and run headless-byteball is below.
 
 ```console
 $ docker build -t headless-byteball .
+$ docker run -it headless-byteball
+```
+
+although it is always a good idea to give a container a name you can remember:
+
+```console
 $ docker run -it --name my-headless-byteball headless-byteball
 ```
 
-Running the container at the first time will set set up some configuration items
+Running the container at the first time will set up some configuration items
 such as the name of the device so it is important to run the container in an
-interactive mode. When finished, release the container by pressing Ctrl-P Ctrl-Q.
+interactive mode. When finished, release the container by pressing Ctrl-p Ctrl-q.
 That will detach the console with leaving the container running.
 
 To stop the container and then restart it again, use:
