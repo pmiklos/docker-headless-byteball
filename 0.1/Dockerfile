@@ -2,7 +2,7 @@ FROM node:7.4-alpine
 
 RUN	deluser --remove-home node \
 	&& adduser -D -u 1000 byteball \
-	&& npm install -g headless-byteball \
+	&& npm install -g headless-byteball@0.1.0 \
 	&& mkdir /byteball /home/byteball/.config \
 	&& chown byteball:byteball /byteball /home/byteball/.config \
 	&& ln -s /byteball /home/byteball/.config/headless-byteball
