@@ -66,8 +66,8 @@ Now you can start the container again and the app will start up with the
 changed configuration.
 
 See configuration options here:
-* [obyte/ocore](https://github.com/obyte/ocore)
-* [obyte/headless-obyte](https://github.com/obyte/headless-obyte)
+* [byteball/ocore](https://github.com/byteball/ocore)
+* [byteball/headless-obyte](https://github.com/byteball/headless-obyte)
 
 ### Checking the log file
 
