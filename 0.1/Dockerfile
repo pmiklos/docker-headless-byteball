@@ -1,18 +1,26 @@
-FROM node:7.4-alpine
+FROM node:8.16
 
 RUN	deluser --remove-home node \
-	&& adduser -D -u 1000 byteball \
-	&& npm install -g headless-byteball@0.1.0 \
-	&& mkdir /byteball /home/byteball/.config \
-	&& chown byteball:byteball /byteball /home/byteball/.config \
-	&& ln -s /byteball /home/byteball/.config/headless-byteball
+	&& adduser -u 1000 obyte \
+	&& mkdir /obyte /home/obyte/.config \
+	&& chown obyte:obyte /obyte /home/obyte/.config \
+	&& ln -s /obyte /home/obyte/.config/headless-obyte
 
-VOLUME /byteball
+USER obyte
+WORKDIR /home/obyte
 
-USER byteball
-WORKDIR /home/byteball
+ARG COMMIT=HEAD
+
+RUN	git clone https://github.com/byteball/headless-obyte.git \
+	&& cd headless-obyte \
+	&& git checkout ${COMMIT} \
+	&& npm install
+
+COPY --chown=obyte:obyte config/ .config/headless-obyte/
+
+VOLUME /obyte
 
 EXPOSE 6611 6332
 
-CMD ["node", "/usr/local/lib/node_modules/headless-byteball/start.js"]
+CMD ["node", "headless-obyte/start.js"]
 
